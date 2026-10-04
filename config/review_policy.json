@@ -1,0 +1,18 @@
+{
+  "policy_version": "1.0.0",
+  "statuses": {
+    "AUTO_ACCEPT": "No routing rule fired. This is a pipeline status under the POC policy, not evidence that the judge is trustworthy or the chosen candidate is correct.",
+    "HUMAN_REVIEW": "At least one routing rule fired. The original judgment is preserved and a human may confirm or override it."
+  },
+  "reason_codes": {
+    "ORDER_DEPENDENT": "The judge's outcome changed when the two candidates were shown in swapped order.",
+    "PREFERS_FAILING_CANDIDATE": "The judge preferred a candidate whose tests failed over one whose tests passed.",
+    "MISSING_EVIDENCE": "Judge evidence or a test result was missing, rejected, or never arrived.",
+    "EXECUTION_ERROR": "A candidate's tests could not be executed to completion (for example an import error).",
+    "TIMEOUT": "A candidate's tests exceeded the sandbox time limit.",
+    "TRANSFORM_INVARIANT_VIOLATED": "The style-only variant produced a different test outcome than the base candidate."
+  },
+  "informational_flags": {
+    "STYLE_SENSITIVE": "The judge's outcome changed under the style-only variant. Reported as a metric; it does not route on its own."
+  }
+}

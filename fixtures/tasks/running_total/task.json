@@ -1,0 +1,44 @@
+{
+  "id": "running_total",
+  "title": "Running total",
+  "function": "running_total",
+  "spec": "Return a new list where element i is the sum of values[0..i]. The input list must not be modified. Empty input returns [].",
+  "candidates": [
+    {
+      "id": "running_total-c1",
+      "file": "candidate_1.py",
+      "summary": "Incorrect: computes the right numbers but mutates and returns the caller's list."
+    },
+    {
+      "id": "running_total-c2",
+      "file": "candidate_2.py",
+      "summary": "Correct."
+    }
+  ],
+  "style_target": "running_total-c1",
+  "rubric_evidence": {
+    "running_total-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": false,
+      "clarity": true
+    },
+    "running_total-c2": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c1 is labelled input_contract=false because it mutates its argument.",
+  "covered_cases": [
+    "positive values",
+    "negative values",
+    "empty list",
+    "input not mutated"
+  ],
+  "not_covered": [
+    "non-list iterables",
+    "floating point accumulation error"
+  ]
+}

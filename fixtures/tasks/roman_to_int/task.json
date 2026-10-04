@@ -1,0 +1,43 @@
+{
+  "id": "roman_to_int",
+  "title": "Roman numeral to integer",
+  "function": "roman_to_int",
+  "spec": "Convert a valid Roman numeral (I, V, X, L, C, D, M, including subtractive notation such as IV, IX, XL) to an integer.",
+  "candidates": [
+    {
+      "id": "roman_to_int-c1",
+      "file": "candidate_1.py",
+      "summary": "Incorrect: ignores subtractive notation."
+    },
+    {
+      "id": "roman_to_int-c2",
+      "file": "candidate_2.py",
+      "summary": "Correct."
+    }
+  ],
+  "style_target": "roman_to_int-c1",
+  "rubric_evidence": {
+    "roman_to_int-c1": {
+      "core_behavior": false,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    },
+    "roman_to_int-c2": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c1 is labelled core_behavior=false because subtractive notation is part of the stated core behaviour.",
+  "covered_cases": [
+    "additive numerals",
+    "subtractive pairs IV and IX",
+    "a mixed numeral (MCMXCIV)"
+  ],
+  "not_covered": [
+    "invalid numerals",
+    "lowercase input"
+  ]
+}

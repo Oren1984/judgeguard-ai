@@ -1,0 +1,45 @@
+{
+  "id": "gcd",
+  "title": "Greatest common divisor",
+  "function": "gcd",
+  "spec": "Return the greatest common divisor of two non-negative integers. gcd(a, 0) == a and gcd(0, 0) == 0.",
+  "candidates": [
+    {
+      "id": "gcd-c1",
+      "file": "candidate_1.py",
+      "summary": "Correct Euclidean algorithm."
+    },
+    {
+      "id": "gcd-c2",
+      "file": "candidate_2.py",
+      "summary": "Never terminates when exactly one argument is zero (exercises the sandbox timeout)."
+    }
+  ],
+  "style_target": "gcd-c1",
+  "rubric_evidence": {
+    "gcd-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    },
+    "gcd-c2": {
+      "core_behavior": true,
+      "edge_cases": false,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c2 is labelled edge_cases=false because zero arguments are not handled.",
+  "covered_cases": [
+    "coprime values",
+    "common factor",
+    "equal values",
+    "one argument zero",
+    "both zero"
+  ],
+  "not_covered": [
+    "negative integers",
+    "very large integers"
+  ]
+}

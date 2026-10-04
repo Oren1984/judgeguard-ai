@@ -1,0 +1,37 @@
+{
+  "id": "safe_divide",
+  "title": "Division with a fallback",
+  "function": "safe_divide",
+  "spec": "Return a / b. If b is zero, return default (None unless provided) instead of raising.",
+  "candidates": [
+    {
+      "id": "safe_divide-c1",
+      "file": "candidate_1.py",
+      "summary": "Correct, explicit zero check."
+    },
+    {
+      "id": "safe_divide-c2",
+      "file": "candidate_2.py",
+      "summary": "Correct, exception based."
+    }
+  ],
+  "style_target": "safe_divide-c2",
+  "rubric_evidence": {
+    "safe_divide-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "DELIBERATELY INCOMPLETE: no rubric evidence is recorded for c2, so evidence-based judges cannot decide and the review gate's 'missing evidence' path is exercised.",
+  "covered_cases": [
+    "ordinary division",
+    "zero divisor with default None",
+    "zero divisor with explicit default"
+  ],
+  "not_covered": [
+    "non-numeric operands",
+    "infinities and NaN"
+  ]
+}

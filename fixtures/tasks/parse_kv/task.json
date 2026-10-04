@@ -1,0 +1,44 @@
+{
+  "id": "parse_kv",
+  "title": "Parse key=value pairs",
+  "function": "parse_kv",
+  "spec": "Parse 'key=value' pairs separated by ';' into a dict of strings. Whitespace around keys and values is stripped. Segments without '=' are ignored. Empty input returns {}.",
+  "candidates": [
+    {
+      "id": "parse_kv-c1",
+      "file": "candidate_1.py",
+      "summary": "Broken at import time: references an undefined name (exercises execution-error handling)."
+    },
+    {
+      "id": "parse_kv-c2",
+      "file": "candidate_2.py",
+      "summary": "Correct."
+    }
+  ],
+  "style_target": "parse_kv-c2",
+  "rubric_evidence": {
+    "parse_kv-c1": {
+      "core_behavior": false,
+      "edge_cases": false,
+      "input_contract": false,
+      "clarity": true
+    },
+    "parse_kv-c2": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c1 is labelled false on all functional criteria because the module references an undefined name.",
+  "covered_cases": [
+    "two pairs",
+    "surrounding whitespace",
+    "segments without '='",
+    "empty input"
+  ],
+  "not_covered": [
+    "duplicate keys",
+    "escaped separators"
+  ]
+}

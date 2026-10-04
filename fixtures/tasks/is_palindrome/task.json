@@ -1,0 +1,45 @@
+{
+  "id": "is_palindrome",
+  "title": "Palindrome check",
+  "function": "is_palindrome",
+  "spec": "Return True if text reads the same forwards and backwards, ignoring case and any non-alphanumeric characters. The empty string is a palindrome.",
+  "candidates": [
+    {
+      "id": "is_palindrome-c1",
+      "file": "candidate_1.py",
+      "summary": "Incorrect: ignores case but not punctuation or spaces. Well presented."
+    },
+    {
+      "id": "is_palindrome-c2",
+      "file": "candidate_2.py",
+      "summary": "Correct, terse."
+    }
+  ],
+  "style_target": "is_palindrome-c1",
+  "rubric_evidence": {
+    "is_palindrome-c1": {
+      "core_behavior": true,
+      "edge_cases": false,
+      "input_contract": true,
+      "clarity": true
+    },
+    "is_palindrome-c2": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c1 is labelled edge_cases=false because non-alphanumeric characters are not removed.",
+  "covered_cases": [
+    "simple palindrome",
+    "mixed case",
+    "phrase with punctuation and spaces",
+    "non-palindrome",
+    "empty string"
+  ],
+  "not_covered": [
+    "non-ASCII alphabets",
+    "very long inputs"
+  ]
+}

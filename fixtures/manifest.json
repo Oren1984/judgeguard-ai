@@ -1,0 +1,19 @@
+{
+  "fixtures_version": "1.0.0",
+  "synthetic": true,
+  "tasks": [
+    "clamp",
+    "is_palindrome",
+    "dedupe_preserve_order",
+    "chunk_list",
+    "word_count",
+    "median",
+    "gcd",
+    "parse_kv",
+    "flatten",
+    "safe_divide",
+    "roman_to_int",
+    "merge_intervals",
+    "running_total"
+  ]
+}

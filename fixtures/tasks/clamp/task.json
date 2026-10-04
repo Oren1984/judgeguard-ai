@@ -1,0 +1,44 @@
+{
+  "id": "clamp",
+  "title": "Clamp a number into a range",
+  "function": "clamp",
+  "spec": "Return x limited to the inclusive range [lo, hi]. Assume lo <= hi.",
+  "candidates": [
+    {
+      "id": "clamp-c1",
+      "file": "candidate_1.py",
+      "summary": "Correct, terse one-liner."
+    },
+    {
+      "id": "clamp-c2",
+      "file": "candidate_2.py",
+      "summary": "Incorrect: never applies the lower bound."
+    }
+  ],
+  "style_target": "clamp-c2",
+  "rubric_evidence": {
+    "clamp-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    },
+    "clamp-c2": {
+      "core_behavior": false,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c2 is labelled core_behavior=false because the lower bound is never applied.",
+  "covered_cases": [
+    "value inside the range",
+    "value below lo",
+    "value above hi",
+    "values equal to the bounds"
+  ],
+  "not_covered": [
+    "lo > hi",
+    "non-numeric or NaN inputs"
+  ]
+}

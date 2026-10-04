@@ -1,0 +1,16 @@
+{
+  "_comment": "Expected sandbox status per base candidate. Used only by project tests; judges never read this file.",
+  "clamp": {"clamp-c1": "PASS", "clamp-c2": "FAIL"},
+  "is_palindrome": {"is_palindrome-c1": "FAIL", "is_palindrome-c2": "PASS"},
+  "dedupe_preserve_order": {"dedupe_preserve_order-c1": "PASS", "dedupe_preserve_order-c2": "FAIL"},
+  "chunk_list": {"chunk_list-c1": "PASS", "chunk_list-c2": "FAIL"},
+  "word_count": {"word_count-c1": "PASS", "word_count-c2": "PASS"},
+  "median": {"median-c1": "FAIL", "median-c2": "FAIL"},
+  "gcd": {"gcd-c1": "PASS", "gcd-c2": "TIMEOUT"},
+  "parse_kv": {"parse_kv-c1": "ERROR", "parse_kv-c2": "PASS"},
+  "flatten": {"flatten-c1": "FAIL", "flatten-c2": "PASS"},
+  "safe_divide": {"safe_divide-c1": "PASS", "safe_divide-c2": "PASS"},
+  "roman_to_int": {"roman_to_int-c1": "FAIL", "roman_to_int-c2": "PASS"},
+  "merge_intervals": {"merge_intervals-c1": "PASS", "merge_intervals-c2": "FAIL"},
+  "running_total": {"running_total-c1": "FAIL", "running_total-c2": "PASS"}
+}

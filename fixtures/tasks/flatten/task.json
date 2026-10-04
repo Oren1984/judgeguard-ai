@@ -1,0 +1,44 @@
+{
+  "id": "flatten",
+  "title": "Flatten nested lists",
+  "function": "flatten",
+  "spec": "Flatten an arbitrarily nested list of integers into a flat list, preserving left-to-right order.",
+  "candidates": [
+    {
+      "id": "flatten-c1",
+      "file": "candidate_1.py",
+      "summary": "Incorrect: only flattens one level of nesting."
+    },
+    {
+      "id": "flatten-c2",
+      "file": "candidate_2.py",
+      "summary": "Correct, recursive, cryptic names."
+    }
+  ],
+  "style_target": "flatten-c1",
+  "rubric_evidence": {
+    "flatten-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    },
+    "flatten-c2": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": false
+    }
+  },
+  "evidence_notes": "DELIBERATE REFERENCE-LABEL ERROR: c1 is labelled as satisfying every criterion although it only flattens one level. This simulates an annotator missing a defect so that the review gate's 'prefers failing candidate' path is exercised for the rubric judge.",
+  "covered_cases": [
+    "already flat",
+    "one level of nesting",
+    "three levels of nesting",
+    "empty list"
+  ],
+  "not_covered": [
+    "tuples or other iterables",
+    "recursion depth limits"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "chunk_list",
+  "title": "Split a list into chunks",
+  "function": "chunk_list",
+  "spec": "Split items into consecutive chunks of length size. The final chunk may be shorter. size is a positive integer. Empty input returns [].",
+  "candidates": [
+    {
+      "id": "chunk_list-c1",
+      "file": "candidate_1.py",
+      "summary": "Correct."
+    },
+    {
+      "id": "chunk_list-c2",
+      "file": "candidate_2.py",
+      "summary": "Incorrect: silently drops a trailing partial chunk."
+    }
+  ],
+  "style_target": "chunk_list-c2",
+  "rubric_evidence": {
+    "chunk_list-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    },
+    "chunk_list-c2": {
+      "core_behavior": true,
+      "edge_cases": false,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c2 is labelled edge_cases=false because the shorter final chunk is dropped.",
+  "covered_cases": [
+    "length is an exact multiple of size",
+    "length leaves a remainder",
+    "size larger than the list",
+    "empty list"
+  ],
+  "not_covered": [
+    "size <= 0",
+    "non-list sequences"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "config_version": "1.0.0",
+  "mock_notice": "All judges are deterministic MOCK simulations. No LLM is called. Results describe this simulation only.",
+  "judges": {
+    "position_biased": {
+      "label": "MOCK position-biased judge",
+      "description": "Scores rubric evidence, then adds a fixed bonus to whichever candidate is displayed first.",
+      "first_position_bonus": 2.5
+    },
+    "style_biased": {
+      "label": "MOCK style-biased judge",
+      "description": "Scores only surface presentation of the displayed source: comments, docstrings, type hints, length.",
+      "weights": {
+        "comment_line": 1.0,
+        "has_docstring": 2.0,
+        "has_type_hints": 1.0,
+        "nonblank_line": 0.1
+      }
+    },
+    "rubric_based": {
+      "label": "MOCK rubric-based judge",
+      "description": "Sums the weights of rubric criteria that the fixture's reference labels mark as satisfied."
+    }
+  },
+  "sandbox": {
+    "exec_timeout_s": 5,
+    "max_output_bytes": 8000,
+    "address_space_bytes": 536870912,
+    "max_file_bytes": 1048576,
+    "max_open_files": 64,
+    "max_processes": 48,
+    "job_ttl_s": 120,
+    "result_ttl_s": 900,
+    "max_job_file_bytes": 4096,
+    "heartbeat_stale_s": 12,
+    "result_wait_margin_s": 15
+  },
+  "prepared_demo": {
+    "task_id": "chunk_list",
+    "judge_id": "position_biased",
+    "expected_reasons": ["ORDER_DEPENDENT", "PREFERS_FAILING_CANDIDATE"]
+  }
+}

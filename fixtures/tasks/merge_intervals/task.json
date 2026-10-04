@@ -1,0 +1,44 @@
+{
+  "id": "merge_intervals",
+  "title": "Merge intervals",
+  "function": "merge_intervals",
+  "spec": "Merge overlapping or touching closed intervals given as (start, end) tuples in any order. Return the merged intervals sorted by start. Empty input returns [].",
+  "candidates": [
+    {
+      "id": "merge_intervals-c1",
+      "file": "candidate_1.py",
+      "summary": "Correct."
+    },
+    {
+      "id": "merge_intervals-c2",
+      "file": "candidate_2.py",
+      "summary": "Incorrect: assumes the input is already sorted by start."
+    }
+  ],
+  "style_target": "merge_intervals-c2",
+  "rubric_evidence": {
+    "merge_intervals-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    },
+    "merge_intervals-c2": {
+      "core_behavior": true,
+      "edge_cases": false,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c2 is labelled edge_cases=false because unsorted input is not handled.",
+  "covered_cases": [
+    "sorted overlapping intervals",
+    "touching intervals",
+    "unsorted input",
+    "empty input"
+  ],
+  "not_covered": [
+    "intervals with start > end",
+    "open or half-open intervals"
+  ]
+}

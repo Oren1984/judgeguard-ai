@@ -1,0 +1,44 @@
+{
+  "id": "word_count",
+  "title": "Word frequency",
+  "function": "word_count",
+  "spec": "Return a dict mapping each lowercase word to its number of occurrences. Words are separated by whitespace. Empty text returns {}.",
+  "candidates": [
+    {
+      "id": "word_count-c1",
+      "file": "candidate_1.py",
+      "summary": "Correct, uses collections.Counter."
+    },
+    {
+      "id": "word_count-c2",
+      "file": "candidate_2.py",
+      "summary": "Correct, explicit loop."
+    }
+  ],
+  "style_target": "word_count-c1",
+  "rubric_evidence": {
+    "word_count-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    },
+    "word_count-c2": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "Both candidates satisfy every criterion; the rubric judge is expected to tie.",
+  "covered_cases": [
+    "repeated words",
+    "mixed case",
+    "irregular whitespace",
+    "empty text"
+  ],
+  "not_covered": [
+    "punctuation handling",
+    "non-string input"
+  ]
+}

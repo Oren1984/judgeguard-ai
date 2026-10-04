@@ -1,0 +1,77 @@
+name: judgeguard
+
+x-hardening: &hardening
+  read_only: true
+  init: true
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  restart: "no"
+
+services:
+  app:
+    <<: *hardening
+    build: {context: ., target: app, secrets: [extra_ca]}
+    image: judgeguard-app:local
+    ports:
+      - "127.0.0.1:8501:8501"   # UI is published on localhost only
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777
+    volumes:
+      - jobs:/exchange/jobs            # app writes job files
+      - results:/exchange/results:ro   # app only reads results
+      - app_data:/data                 # JSONL case and review records
+    mem_limit: 768m
+    memswap_limit: 768m
+    pids_limit: 128
+    cpus: 1.0
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=3).status == 200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+  sandbox:
+    <<: *hardening
+    build: {context: ., target: sandbox, secrets: [extra_ca]}
+    image: judgeguard-sandbox:local
+    network_mode: none                 # no network at all; no ports
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=32m,mode=1777   # the only writable scratch space
+    volumes:
+      - jobs:/exchange/jobs:ro         # worker only reads jobs
+      - results:/exchange/results      # worker writes results
+    mem_limit: 256m
+    memswap_limit: 256m
+    pids_limit: 64
+    cpus: 0.5
+    healthcheck:
+      test: ["CMD", "python", "-c", "import json,time,sys; sys.exit(0 if time.time() - json.load(open('/exchange/results/heartbeat.json'))['ts'] < 15 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Project test suite. Runs fixture code, so it gets the same isolation as the sandbox.
+  # docker compose --profile test run --rm tests
+  tests:
+    <<: *hardening
+    profiles: [test]
+    build: {context: ., target: tests, secrets: [extra_ca]}
+    image: judgeguard-tests:local
+    network_mode: none
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777
+    mem_limit: 512m
+    memswap_limit: 512m
+    pids_limit: 128
+    cpus: 1.0
+
+# Optional extra CA (PEM) trusted by pip at build time only, for networks that re-sign TLS.
+# Defaults to an empty placeholder. Set JG_EXTRA_CA_FILE (for example in .env) to use one.
+secrets:
+  extra_ca:
+    file: ${JG_EXTRA_CA_FILE:-./docker/no-extra-ca.pem}
+
+volumes:
+  jobs:
+  results:
+  app_data:

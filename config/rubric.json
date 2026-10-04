@@ -1,0 +1,10 @@
+{
+  "rubric_version": "1.0.0",
+  "evidence_source": "fixtures/tasks/<task>/task.json -> rubric_evidence (hand-authored reference labels, keyed by stable candidate ID)",
+  "criteria": [
+    {"id": "core_behavior", "weight": 3, "question": "Does the code implement the main behaviour stated in the specification?"},
+    {"id": "edge_cases", "weight": 2, "question": "Does the code handle the edge cases named in the specification?"},
+    {"id": "input_contract", "weight": 1, "question": "Does the code respect the stated input/output contract (for example, no mutation of arguments)?"},
+    {"id": "clarity", "weight": 1, "question": "Are names and structure readable?"}
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "dedupe_preserve_order",
+  "title": "Remove duplicates, keep order",
+  "function": "dedupe_preserve_order",
+  "spec": "Return a new list with duplicates removed, keeping the first occurrence of each item in its original position. Items are hashable. The input list must not be modified.",
+  "candidates": [
+    {
+      "id": "dedupe_preserve_order-c1",
+      "file": "candidate_1.py",
+      "summary": "Correct, documented."
+    },
+    {
+      "id": "dedupe_preserve_order-c2",
+      "file": "candidate_2.py",
+      "summary": "Incorrect: removes duplicates but loses the original order."
+    }
+  ],
+  "style_target": "dedupe_preserve_order-c2",
+  "rubric_evidence": {
+    "dedupe_preserve_order-c1": {
+      "core_behavior": true,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    },
+    "dedupe_preserve_order-c2": {
+      "core_behavior": false,
+      "edge_cases": true,
+      "input_contract": true,
+      "clarity": true
+    }
+  },
+  "evidence_notes": "c2 is labelled core_behavior=false because order preservation is the core requirement.",
+  "covered_cases": [
+    "integers with duplicates",
+    "strings with duplicates",
+    "empty list",
+    "input not mutated"
+  ],
+  "not_covered": [
+    "unhashable items",
+    "very large inputs"
+  ]
+}
